@@ -224,8 +224,20 @@ public abstract class AbstractMapper {
      * @throws MapperException if something goes wrong...
      */
     protected DomainObject load(ResultSet rs) throws MapperException {
-        /* TO COMPLETE using loadAll method (above) as a template */
-        return null; // to remove (only for compilation)
+        try {
+            String id = new String(rs.getString(1)); // catching the id from the result
+
+            // if the object is already loaded in the cache we return it
+            if (loadedMap.objectMap.containsKey(id))
+                return (DomainObject) loadedMap.objectMap.get(id);
+
+            // if the objecct has been loaded yet, we load it up, add it to the cache and return it
+            DomainObject result = doLoad(rs);
+            loadedMap.objectMap.put(id, result);
+            return result;
+        } catch (SQLException e) {
+            throw new MapperException(e.getMessage());
+        }
     }
 
 }
