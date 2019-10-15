@@ -172,7 +172,30 @@ public abstract class AbstractMapper {
      * @throws MapperException if something goes wrong...
      */
     protected void abstractUpdate(DomainObject updatedObject) throws MapperException {
-        /* TO COMPLETE using insert and find methods as a template */
+        if (updatedObject == null) {
+            throw new MapperException("AbstractMapper:: Find failed because specified object is null...");
+        } else {
+            try {
+                // we catch the ID of the specified object
+                Object id = updatedObject.getId();
+
+                // if an object corresponding is present in cache, we delete it
+                if (loadedMap.objectMap.containsKey(id))
+                    loadedMap.objectMap.remove(id);
+
+                // creation of a prepared update statement
+                PreparedStatement updateStatement = db.prepare(updateStatement());
+
+                // set id value into SQL statement
+                doUpdate(updatedObject, updateStatement);
+
+                // executing the statement
+                updateStatement.execute();
+
+            } catch (SQLException e) {
+                throw new MapperException(e.getMessage());
+            }
+        }
     }
 
     /**
