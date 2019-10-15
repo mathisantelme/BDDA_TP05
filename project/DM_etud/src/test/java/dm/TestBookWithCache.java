@@ -9,7 +9,7 @@ import java.util.Set;
  * Use 'mvn test' to run it
  * The test order is not significant.
  */
-public class TestBook {
+public class TestBookWithCache {
     private static BookMapper bm = BookMapper.getMapper();
     private static Book JPAbook = new Book("978-1430219569",
             "JPA 2: Mastering the Java™ Persistence API",

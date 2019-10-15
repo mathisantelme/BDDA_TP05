@@ -168,17 +168,26 @@ public abstract class AbstractMapper {
             throw new MapperException("AbstractMapper:: Find failed because criterion and/or findManyPattern is/are null...");
         } else {
             try {
+                // the set used to store the resulting loaded objects
+                Set<DomainObject> result = new HashSet<>();
+
                 // creating a prepared statement
                 PreparedStatement findManyStatement = db.prepare(findManyPattern);
 
                 // set criterion value into SQL statement
                 findManyStatement.setObject(1, criterion);
 
-                // executing the querry
+                // executing the query
                 ResultSet rs = findManyStatement.executeQuery();
 
-                // returning the values found
-                return loadAll(rs);
+                // loading the resultsand adding them to the cache
+                while (rs.next()) {
+                    loadedMap.objectMap.put(rs.getString(1), rs);
+                    result.add(load(rs));
+                }
+
+                // returning the results
+                return result;
 
             } catch (SQLException e) {
                 throw new MapperException(e.getMessage());
@@ -237,6 +246,9 @@ public abstract class AbstractMapper {
 
                 // catching the ID of the specified object
                 Object id = subject.getId();
+
+                // set id value into SQL statement
+                deleteStatement.setObject(1, id);
 
                 // if the object is already present in the cache we delete it
                 if (loadedMap.objectMap.containsKey(id))

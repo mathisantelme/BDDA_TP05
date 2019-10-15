@@ -5,6 +5,15 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dm/AbstractMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dm/AbstractMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dm/BookMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dm/BookMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/dm/TestBookWithCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dm/TestBookWithCache.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dm/AbstractMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dm/AbstractMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dm/Book.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dm/Book.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dm/BookMapperException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dm/BookMapperException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dm/BookMapperOps.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dm/BookMapperOps.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dm/DB.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dm/DB.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dm/DomainObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dm/DomainObject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dm/MapperException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dm/MapperException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dm/Registry.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dm/Registry.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
