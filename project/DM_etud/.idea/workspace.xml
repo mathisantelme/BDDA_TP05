@@ -4,12 +4,28 @@
     <list default="true" id="d3f68229-24c5-4ad9-a44c-84e9690b77a7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dm/AbstractMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dm/AbstractMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dm/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dm/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dm/AbstractMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dm/AbstractMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dm/Book.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dm/Book.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dm/BookMapperException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dm/BookMapperException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dm/BookMapperOps.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dm/BookMapperOps.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dm/DB.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dm/DB.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dm/DomainObject.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dm/DomainObject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dm/MapperException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dm/MapperException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dm/Registry.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dm/Registry.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
