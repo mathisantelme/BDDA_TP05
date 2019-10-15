@@ -1,5 +1,8 @@
 package dm;
 
+import jdk.internal.module.ModuleLoaderMap;
+
+import javax.xml.transform.Result;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -134,10 +137,13 @@ public abstract class AbstractMapper {
             try {
                 // create a prepared SQL statement
                 PreparedStatement findStatement = db.prepare(findStatement());
+
                 // set id value into SQL statement
                 findStatement.setObject(1, id);
+
                 // execute select statement
                 ResultSet rs = findStatement.executeQuery();
+
                 // if there is one result
                 if (rs.next()) {
                     // build and return the object
@@ -161,8 +167,26 @@ public abstract class AbstractMapper {
      */
     protected Set<DomainObject> abstractFindMany(Object criterion, String findManyPattern)
             throws MapperException {
-        /* TO COMPLETE using insert and find methods as a template */
-        return new HashSet<>(); // to remove (only for compilation)
+        if (criterion == null && findManyPattern == null) {
+            throw new MapperException("AbstractMapper:: Find failed because criterion and/or findManyPattern is/are null...");
+        } else {
+            try {
+                // creating a prepared statement
+                PreparedStatement findManyStatement = db.prepare(findManyPattern);
+
+                // set criterion value into SQL statement
+                findManyStatement.setObject(3, criterion);
+
+                // executing the querry
+                ResultSet rs = findManyStatement.executeQuery();
+
+                // returning the values found
+                return loadAll(rs);
+
+            } catch (SQLException e) {
+                throw new MapperException(e.getMessage());
+            }
+        }
     }
 
     /**
@@ -190,7 +214,11 @@ public abstract class AbstractMapper {
                 doUpdate(updatedObject, updateStatement);
 
                 // executing the statement
-                updateStatement.execute();
+                int numRowAffected = updateStatement.executeUpdate();
+
+                // if the number of row affected by the querry equals 0, then we throw an error
+                if (numRowAffected == 0)
+                    throw new MapperException("AbstractMapper:: Update failed because no corresponding objects were found");
 
             } catch (SQLException e) {
                 throw new MapperException(e.getMessage());
@@ -204,7 +232,29 @@ public abstract class AbstractMapper {
      * @throws MapperException if something goes wrong...
      */
     protected void abstractDelete(DomainObject subject) throws MapperException {
-        /* TO COMPLETE using insert and find methods as a template */
+        if (subject == null) {
+            throw new MapperException("AbstractMapper:: Delete failed because specified object is null...");
+        } else {
+            try {
+                PreparedStatement deleteStatement = db.prepare(deleteStatement());
+
+                // catching the ID of the specified object
+                Object id = subject.getId();
+
+                // if the object is already present in the cache we delete it
+                if (loadedMap.objectMap.containsKey(id))
+                    loadedMap.objectMap.remove(id);
+
+                // we execute the request
+                int numRowAffected = deleteStatement.executeUpdate();
+
+                if (numRowAffected == 0)
+                    throw new MapperException("AbstractMapper:: Delete failed because no corresponding objects were found");
+
+            } catch (SQLException e) {
+                throw new MapperException(e.getMessage());
+            }
+        }
     }
 
     /**
@@ -212,7 +262,19 @@ public abstract class AbstractMapper {
      * @throws MapperException if something goes wrong...
      */
     protected void abstractDeleteAll() throws MapperException {
-        /* TO COMPLETE using insert and find methods as a template */
+        try {
+            // first we clear the content of the cache
+            loadedMap.objectMap.clear();
+
+            // then we create à deleteAll request
+            PreparedStatement deleteAllStatement = db.prepare(deleteAllStatement());
+
+            // we execute the satement
+            deleteAllStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new MapperException(e.getMessage());
+        }
     }
 
     /**
