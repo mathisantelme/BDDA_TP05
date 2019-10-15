@@ -172,7 +172,7 @@ public abstract class AbstractMapper {
                 PreparedStatement findManyStatement = db.prepare(findManyPattern);
 
                 // set criterion value into SQL statement
-                findManyStatement.setObject(3, criterion);
+                findManyStatement.setObject(1, criterion);
 
                 // executing the querry
                 ResultSet rs = findManyStatement.executeQuery();

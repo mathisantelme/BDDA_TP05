@@ -12,8 +12,8 @@ public class BookMapper extends AbstractMapper implements BookMapperOps {
     }
 
     // Accessor
-    public AbstractMapper getMapper () {
-        return this;
+    public static AbstractMapper getMapper () {
+
     }
 
     // AbstractMapper inherited methods override
